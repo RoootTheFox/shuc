@@ -19,3 +19,7 @@ include = [
 [dependencies]
 console = "0.15.7"
 owo-colors = "3.5.0"
+
+[profile.release]
+lto = true
+opt-level = "s"

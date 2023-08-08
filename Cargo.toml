@@ -2,6 +2,17 @@
 name = "shuc"
 version = "0.1.0"
 edition = "2021"
+description = "a simple wrapper command to prompt you before running a command"
+repository = "https://github.com/RoootTheFox/shuc"
+license-file = "LICENSE"
+readme = "README.md"
+keywords = ["wrapper", "prompt", "command", "cli", "confirmation"]
+categories = ["command-line-utilities"]
+include = [
+    "**/*.rs",
+    "Cargo.toml",
+    "LICENSE",
+]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

@@ -15,6 +15,7 @@ and prompts you to confirm before running it.**
 you can use aliases to always run common commands (such as shutdown or rm) through shuc:<br>
 - `alias rm="shuc rm"`
 - `alias shutdown="shuc shutdown"`
+
 ## why is it named `shuc`?
 the original name intention was "**shu**tdown **c**onfirmation" but i decided it would be a better idea to make it universal
 

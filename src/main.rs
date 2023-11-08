@@ -55,7 +55,16 @@ fn main() {
 
     let c = read_char();
     if c == 'y' || c == 'Y' {
-        command.spawn().expect("failed to run command");
+        // children bad, only use them if its *REALLY* necessary (only unix supports exec)
+        #[cfg(not(unix))] {
+            let mut child = command.spawn().expect("failed to run command");
+            let status = child.wait().expect("failed to wait on child");
+            exit(status.code().unwrap());
+        }
+        #[cfg(unix)] {
+            use std::os::unix::process::CommandExt;
+            command.exec();
+        }
     } else {
         println!(
             "{} {}",

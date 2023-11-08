@@ -63,7 +63,8 @@ fn main() {
         }
         #[cfg(unix)] {
             use std::os::unix::process::CommandExt;
-            command.exec();
+            let error = command.exec();
+            println!("{} {}", get_prefix().red(), error);
         }
     } else {
         println!(

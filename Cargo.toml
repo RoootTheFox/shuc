@@ -1,6 +1,6 @@
 [package]
 name = "shuc"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "a simple wrapper command to prompt you before running a command"
 repository = "https://github.com/RoootTheFox/shuc"

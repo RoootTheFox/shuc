@@ -53,7 +53,8 @@ fn main() {
     // flush stdout to display the prompt
     let _ = std::io::stdout().flush();
 
-    if read_char() == 'y' {
+    let c = read_char();
+    if c == 'y' || c == 'Y' {
         command.spawn().expect("failed to run command");
     } else {
         println!(

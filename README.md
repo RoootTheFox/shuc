@@ -9,7 +9,8 @@ and prompts you to confirm before running it.**
 
 ## installing
 - you need the rust toolchain installed on your system (as well as having .cargo/bin in your path)
-- then simply run `cargo install --git https://github.com/RoootTheFox/shuc`
+- then simply run `cargo install shuc`
+- or run `cargo install --git https://github.com/RoootTheFox/shuc`
 
 ## extras
 you can use aliases to always run common commands (such as shutdown or rm) through shuc:<br>

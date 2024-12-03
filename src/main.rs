@@ -28,6 +28,15 @@ fn main() {
         Err(_) => "localhost".to_string(),
     };
 
+    #[cfg(unix)]
+    // show logged in users if user tries to shutdown/reboot
+    {
+        let who = Command::new("who").output();
+        if !who.is_err() && ["shutdown", "reboot", "poweroff"].contains(&cmd.as_str()) {
+            let _ = println!("{}", String::from_utf8_lossy(&who.unwrap().stdout));
+        }
+    }
+
     let mut command = Command::new(cmd.clone());
     command.args(args.clone());
 
@@ -56,12 +65,14 @@ fn main() {
     let c = read_char();
     if c == 'y' || c == 'Y' {
         // children bad, only use them if its *REALLY* necessary (only unix supports exec)
-        #[cfg(not(unix))] {
+        #[cfg(not(unix))]
+        {
             let mut child = command.spawn().expect("failed to run command");
             let status = child.wait().expect("failed to wait on child");
             exit(status.code().unwrap());
         }
-        #[cfg(unix)] {
+        #[cfg(unix)]
+        {
             use std::os::unix::process::CommandExt;
             let error = command.exec();
             println!("{} {}", get_prefix().red(), error);
